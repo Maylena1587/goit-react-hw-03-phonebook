@@ -2,10 +2,10 @@ import { Component } from 'react';
 import shortid from 'shortid';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Container from './components/Container/Container';
-import ContactForm from './components/ContactForm/ContactForm';
-import Filter from './components/Filter/Filter';
-import ContactList from './components/ContactList/ContactList';
+import Container from '../Container/Container';
+import ContactForm from '../ContactForm/ContactForm';
+import Filter from '../Filter/Filter';
+import ContactList from '../ContactList/ContactList';
 
 class App extends Component {
   state = {
@@ -41,12 +41,12 @@ class App extends Component {
     const { contacts } = this.state;
 
     if (
-      contacts.find(
+      contacts.some(
         contact => contact.name.toLowerCase() === name.toLowerCase(),
       )
     ) {
       toast(`${name} is already in contacts.`);
-    } else if (contacts.find(contact => contact.number === number)) {
+    } else if (contacts.some(contact => contact.number === number)) {
       toast(`${number} is already in contacts.`);
     } else if (name.trim() === '' || number.trim() === '') {
       toast.info("Enter the contact's name and number phone!");
